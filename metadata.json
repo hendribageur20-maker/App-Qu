@@ -1,0 +1,6 @@
+{
+  "name": "App Qu Group — Katalog & Live Preview Web AI",
+  "description": "Platform katalog web app, AI HTML App Builder, video tutorial, dan fitur Live Preview interaktif sebelum mengunduh kode sumber index.html.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
