@@ -322,14 +322,34 @@ export default function App() {
           </nav>
 
           {/* Zone 3: Primary Action (Live Preview & Download Master index.html for GitHub) */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={handleOpenMasterPortalPreview}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap cursor-pointer"
             >
               <Eye className="w-4 h-4" />
-              <span>Preview & Unduh index.html</span>
+              <span className="hidden sm:inline">Preview index.html</span>
+              <span className="sm:hidden">Preview</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const masterHtml = buildMasterAppQuGroupHtml(apps);
+                const blob = new Blob([masterHtml], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'index.html';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }}
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs sm:text-sm font-extrabold transition-colors whitespace-nowrap shadow-xs cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download index.html (GitHub)</span>
             </button>
           </div>
         </div>
